@@ -14,16 +14,15 @@ import Link from 'next/link'
 interface SideNavProps {}
 
 const SideNav: FunctionComponent<SideNavProps> = () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
       <div
         className={
           'absolute h-full right-0 z-10 bg-zinc-900 bg-opacity-75 backdrop-blur-md duration-300 ' +
-          (isOpen && 'translate-x-full')
+          (!isOpen && 'translate-x-full')
         }
       >
-        {' '}
         <button
           id="menu-icon"
           className={
@@ -32,9 +31,9 @@ const SideNav: FunctionComponent<SideNavProps> = () => {
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? (
-            <FontAwesomeIcon icon={faBars} />
-          ) : (
             <FontAwesomeIcon icon={faClose} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
           )}
         </button>
         <hr className="mx-4 mt-28 opacity-50 " />
